@@ -1,0 +1,10 @@
+image: docker:19.03.12
+
+variables:
+  DOCKER_HOST: tcp://localhost:2375
+services:
+  - docker:19.03.12-dind
+weather:
+  script:
+    - docker build -t test_docker .
+    - docker run -p 4000:4000 -it test_docker
